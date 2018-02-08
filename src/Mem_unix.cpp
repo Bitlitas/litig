@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -26,7 +26,7 @@
 #include <sys/mman.h>
 
 
-#if defined(XMRIG_ARM) && !defined(__clang__)
+#if defined(LITIG_ARM) && !defined(__clang__)
 #   include "aligned_malloc.h"
 #else
 #   include <mm_malloc.h>

@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -194,7 +194,7 @@ void Workers::onTick(uv_timer_t *handle)
         m_hashrate->updateHighest();
     }
 
-#   ifndef XMRIG_NO_API
+#   ifndef LITIG_NO_API
     Api::tick(m_hashrate);
 #   endif
 }

@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -95,7 +95,7 @@ bool Job::setBlob(const char *blob)
         m_nicehash = true;
     }
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef LITIG_PROXY_PROJECT
     memset(m_rawBlob, 0, sizeof(m_rawBlob));
     memcpy(m_rawBlob, blob, m_size * 2);
 #   endif
@@ -136,7 +136,7 @@ bool Job::setTarget(const char *target)
         return false;
     }
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef LITIG_PROXY_PROJECT
     memset(m_rawTarget, 0, sizeof(m_rawTarget));
     memcpy(m_rawTarget, target, len);
 #   endif

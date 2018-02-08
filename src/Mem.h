@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -63,7 +63,7 @@ private:
     static size_t m_offset;
     VAR_ALIGN(16, static uint8_t *m_memory);
 
-#   ifndef XMRIG_NO_AEON
+#   ifndef LITIG_NO_AEON
     static cryptonight_ctx *createLite(int threadId);
 #   endif
 };

@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik  <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler       <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones  <https://github.com/lucasjones>
@@ -26,7 +26,7 @@
 #define __CRYPTONIGHT_ARM_H__
 
 
-#if defined(XMRIG_ARM) && !defined(__clang__)
+#if defined(LITIG_ARM) && !defined(__clang__)
 #   include "aligned_malloc.h"
 #else
 #   include <mm_malloc.h>
@@ -63,7 +63,7 @@ static inline void do_jh_hash(const void* input, size_t len, char* output) {
 
 
 static inline void do_skein_hash(const void* input, size_t len, char* output) {
-    xmr_skein(static_cast<const uint8_t*>(input), reinterpret_cast<uint8_t*>(output));
+    lit_skein(static_cast<const uint8_t*>(input), reinterpret_cast<uint8_t*>(output));
 }
 
 
@@ -86,7 +86,7 @@ static inline __attribute__((always_inline)) uint64_t _mm_cvtsi128_si64(__m128i 
 #define EXTRACT64(X) _mm_cvtsi128_si64(X)
 
 
-#if defined(XMRIG_ARMv8)
+#if defined(LITIG_ARMv8)
 static inline uint64_t __umul128(uint64_t a, uint64_t b, uint64_t* hi)
 {
     unsigned __int128 r = (unsigned __int128) a * (unsigned __int128) b;
@@ -203,7 +203,7 @@ static inline void aes_round(__m128i key, __m128i* x0, __m128i* x1, __m128i* x2,
         *x6 = soft_aesenc((uint32_t*)x6, key);
         *x7 = soft_aesenc((uint32_t*)x7, key);
     }
-#   ifndef XMRIG_ARMv7
+#   ifndef LITIG_ARMv7
     else {
         *x0 = vaesmcq_u8(vaeseq_u8(*((uint8x16_t *) x0), key));
         *x1 = vaesmcq_u8(vaeseq_u8(*((uint8x16_t *) x1), key));
@@ -368,7 +368,7 @@ inline void cryptonight_hash(const void *__restrict__ input, size_t size, void *
         }
         else {
             cx = _mm_load_si128((__m128i *) &l0[idx0 & MASK]);
-#           ifndef XMRIG_ARMv7
+#           ifndef LITIG_ARMv7
             cx = vreinterpretq_m128i_u8(vaesmcq_u8(vaeseq_u8(cx, vdupq_n_u8(0)))) ^ _mm_set_epi64x(ah0, al0);
 #           endif
         }
@@ -435,7 +435,7 @@ inline void cryptonight_double_hash(const void *__restrict__ input, size_t size,
         else {
             cx0 = _mm_load_si128((__m128i *) &l0[idx0 & MASK]);
             cx1 = _mm_load_si128((__m128i *) &l1[idx1 & MASK]);
-#           ifndef XMRIG_ARMv7
+#           ifndef LITIG_ARMv7
             cx0 = vreinterpretq_m128i_u8(vaesmcq_u8(vaeseq_u8(cx0, vdupq_n_u8(0)))) ^ _mm_set_epi64x(ah0, al0);
             cx1 = vreinterpretq_m128i_u8(vaesmcq_u8(vaeseq_u8(cx1, vdupq_n_u8(0)))) ^ _mm_set_epi64x(ah1, al1);
 #           endif

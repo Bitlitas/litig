@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -31,7 +31,7 @@
 #include "Platform.h"
 #include "version.h"
 
-#ifdef XMRIG_NVIDIA_PROJECT
+#ifdef LITIG_NVIDIA_PROJECT
 #   include "nvidia/cryptonight.h"
 #endif
 
@@ -42,7 +42,7 @@ static inline char *createUserAgent()
 
     char *buf = new char[max];
 
-#   ifdef XMRIG_NVIDIA_PROJECT
+#   ifdef LITIG_NVIDIA_PROJECT
     const int cudaVersion = cuda_get_runtime_version();
     snprintf(buf, max, "%s/%s (Macintosh; Intel Mac OS X) libuv/%s CUDA/%d.%d clang/%d.%d.%d", APP_NAME, APP_VERSION, uv_version_string(), cudaVersion / 1000, cudaVersion % 100, __clang_major__, __clang_minor__, __clang_patchlevel__);
 #   else

@@ -1,10 +1,10 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
  * Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet>
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
- * Copyright 2016-2018 XMRig       <support@xmrig.com>
+ * Copyright 2016-2018 LITig       <support@xmrig.com>
  *
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -24,13 +24,13 @@
 #ifndef __VERSION_H__
 #define __VERSION_H__
 
-#define APP_ID        "xmrig"
-#define APP_NAME      "XMRig"
-#define APP_DESC      "XMRig CPU miner"
+#define APP_ID        "litig"
+#define APP_NAME      "LITig"
+#define APP_DESC      "LITig CPU miner"
 #define APP_VERSION   "2.4.4"
-#define APP_DOMAIN    "xmrig.com"
-#define APP_SITE      "www.xmrig.com"
-#define APP_COPYRIGHT "Copyright (C) 2016-2018 xmrig.com"
+#define APP_DOMAIN    "litig.com"
+#define APP_SITE      "www.litig.com"
+#define APP_COPYRIGHT "Copyright (C) 2016-2018 litig.com"
 #define APP_KIND      "cpu"
 
 #define APP_VER_MAJOR  2

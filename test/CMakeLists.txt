@@ -1,4 +1,4 @@
-project("xmrig-test" C)
+project("litig-test" C)
 cmake_minimum_required(VERSION 3.0)
 
 include(CTest)

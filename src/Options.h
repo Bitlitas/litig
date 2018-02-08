@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -40,7 +40,7 @@ class Options
 {
 public:
     enum Algo {
-        ALGO_CRYPTONIGHT,      /* CryptoNight (Monero) */
+        ALGO_CRYPTONIGHT,      /* CryptoNight (Bitlitas) */
         ALGO_CRYPTONIGHT_LITE, /* CryptoNight-Lite (AEON) */
     };
 
@@ -104,7 +104,7 @@ private:
     bool setAlgo(const char *algo);
 
     int getAlgoVariant() const;
-#   ifndef XMRIG_NO_AEON
+#   ifndef LITIG_NO_AEON
     int getAlgoVariantLite() const;
 #   endif
 

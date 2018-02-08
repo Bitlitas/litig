@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -30,7 +30,7 @@
 
 void Cpu::init()
 {
-#   ifdef XMRIG_NO_LIBCPUID
+#   ifdef LITIG_NO_LIBCPUID
     SYSTEM_INFO sysinfo;
     GetSystemInfo(&sysinfo);
 

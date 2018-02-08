@@ -27,7 +27,7 @@
 #pragma once
 
 
-#if defined(XMRIG_ARM)
+#if defined(LITIG_ARM)
 #   include "crypto/SSE2NEON.h"
 #elif defined(__GNUC__)
 #   include <x86intrin.h>
@@ -113,7 +113,7 @@ static inline uint32_t sub_word(uint32_t key)
          saes_sbox[key & 0xff];
 }
 
-#if defined(__clang__) || defined(XMRIG_ARM)
+#if defined(__clang__) || defined(LITIG_ARM)
 static inline uint32_t _rotr(uint32_t value, uint32_t amount)
 {
     return (value >> amount) | (value << ((32 - amount) & 31));

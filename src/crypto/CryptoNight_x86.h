@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -63,7 +63,7 @@ static inline void do_jh_hash(const void* input, size_t len, char* output) {
 
 
 static inline void do_skein_hash(const void* input, size_t len, char* output) {
-    xmr_skein(static_cast<const uint8_t*>(input), reinterpret_cast<uint8_t*>(output));
+    lit_skein(static_cast<const uint8_t*>(input), reinterpret_cast<uint8_t*>(output));
 }
 
 

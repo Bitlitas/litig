@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -33,7 +33,7 @@
 #endif
 
 
-#ifndef XMRIG_NO_HTTPD
+#ifndef LITIG_NO_HTTPD
 #   include <microhttpd.h>
 #endif
 
@@ -86,7 +86,7 @@ Options:\n\
 "\
       --max-cpu-usage=N    maximum CPU usage for automatic threads mode (default 75)\n\
       --safe               safe adjust threads and av settings for current CPU\n\
-      --nicehash           enable nicehash/xmrig-proxy support\n\
+      --nicehash           enable nicehash/litig-proxy support\n\
       --print-time=N       print hashrate report every N seconds\n\
       --api-port=N         port for the miner API\n\
       --api-access-token=T access token for API\n\
@@ -178,7 +178,7 @@ static struct option const api_options[] = {
 
 static const char *algo_names[] = {
     "cryptonight",
-#   ifndef XMRIG_NO_AEON
+#   ifndef LITIG_NO_AEON
     "cryptonight-lite"
 #   endif
 };
@@ -679,7 +679,7 @@ void Options::showVersion()
 
     printf("\nlibuv/%s\n", uv_version_string());
 
-#   ifndef XMRIG_NO_HTTPD
+#   ifndef LITIG_NO_HTTPD
     printf("libmicrohttpd/%s\n", MHD_get_version());
 #   endif
 }
@@ -693,7 +693,7 @@ bool Options::setAlgo(const char *algo)
             break;
         }
 
-#       ifndef XMRIG_NO_AEON
+#       ifndef LITIG_NO_AEON
         if (i == ARRAY_SIZE(algo_names) - 1 && !strcmp(algo, "cryptonight-light")) {
             m_algo = ALGO_CRYPTONIGHT_LITE;
             break;
@@ -712,7 +712,7 @@ bool Options::setAlgo(const char *algo)
 
 int Options::getAlgoVariant() const
 {
-#   ifndef XMRIG_NO_AEON
+#   ifndef LITIG_NO_AEON
     if (m_algo == ALGO_CRYPTONIGHT_LITE) {
         return getAlgoVariantLite();
     }
@@ -730,7 +730,7 @@ int Options::getAlgoVariant() const
 }
 
 
-#ifndef XMRIG_NO_AEON
+#ifndef LITIG_NO_AEON
 int Options::getAlgoVariantLite() const
 {
     if (m_algoVariant <= AV0_AUTO || m_algoVariant >= AV_MAX) {

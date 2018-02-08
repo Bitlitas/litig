@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -47,7 +47,7 @@ void Cpu::initCommon()
 {
     memcpy(m_brand, "Unknown", 7);
 
-#   if defined(XMRIG_ARMv8)
+#   if defined(LITIG_ARMv8)
     m_flags |= X86_64;
     m_flags |= AES;
 #   endif

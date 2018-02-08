@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -51,7 +51,7 @@ static void print_versions()
 #   endif
 
 
-    Log::i()->text(Options::i()->colors() ? "\x1B[01;32m * \x1B[01;37mVERSIONS:     \x1B[01;36mXMRig/%s\x1B[01;37m libuv/%s%s" : " * VERSIONS:     XMRig/%s libuv/%s%s",
+    Log::i()->text(Options::i()->colors() ? "\x1B[01;32m * \x1B[01;37mVERSIONS:     \x1B[01;36mLITig/%s\x1B[01;37m libuv/%s%s" : " * VERSIONS:     LITig/%s libuv/%s%s",
                    APP_VERSION, uv_version_string(), buf);
 }
 
@@ -76,13 +76,13 @@ static void print_cpu()
                        Cpu::sockets(),
                        Cpu::isX64() ? "\x1B[01;32m" : "\x1B[01;31m-",
                        Cpu::hasAES() ? "\x1B[01;32m" : "\x1B[01;31m-");
-#       ifndef XMRIG_NO_LIBCPUID
+#       ifndef LITIG_NO_LIBCPUID
         Log::i()->text("\x1B[01;32m * \x1B[01;37mCPU L2/L3:    %.1f MB/%.1f MB", Cpu::l2() / 1024.0, Cpu::l3() / 1024.0);
 #       endif
     }
     else {
         Log::i()->text(" * CPU:          %s (%d) %sx64 %sAES-NI", Cpu::brand(), Cpu::sockets(), Cpu::isX64() ? "" : "-", Cpu::hasAES() ? "" : "-");
-#       ifndef XMRIG_NO_LIBCPUID
+#       ifndef LITIG_NO_LIBCPUID
         Log::i()->text(" * CPU L2/L3:    %.1f MB/%.1f MB", Cpu::l2() / 1024.0, Cpu::l3() / 1024.0);
 #       endif
     }
@@ -128,7 +128,7 @@ static void print_pools()
 }
 
 
-#ifndef XMRIG_NO_API
+#ifndef LITIG_NO_API
 static void print_api()
 {
     if (Options::i()->apiPort() == 0) {
@@ -159,7 +159,7 @@ void Summary::print()
     print_threads();
     print_pools();
 
-#   ifndef XMRIG_NO_API
+#   ifndef LITIG_NO_API
     print_api();
 #   endif
 

@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -121,7 +121,7 @@ private:
     uv_stream_t *m_stream;
     uv_tcp_t *m_socket;
 
-#   ifndef XMRIG_PROXY_PROJECT
+#   ifndef LITIG_PROXY_PROJECT
     uv_timer_t m_keepAliveTimer;
 #   endif
 };

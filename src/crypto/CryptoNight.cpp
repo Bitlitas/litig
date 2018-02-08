@@ -1,4 +1,4 @@
-/* XMRig
+/* LITig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -24,7 +24,7 @@
 
 #include "crypto/CryptoNight.h"
 
-#if defined(XMRIG_ARM)
+#if defined(LITIG_ARM)
 #   include "crypto/CryptoNight_arm.h"
 #else
 #   include "crypto/CryptoNight_x86.h"
@@ -40,14 +40,14 @@ void (*cryptonight_hash_ctx)(const void *input, size_t size, void *output, crypt
 
 
 static void cryptonight_av1_aesni(const void *input, size_t size, void *output, struct cryptonight_ctx *ctx) {
-#   if !defined(XMRIG_ARMv7)
+#   if !defined(LITIG_ARMv7)
     cryptonight_hash<0x80000, MEMORY, 0x1FFFF0, false>(input, size, output, ctx);
 #   endif
 }
 
 
 static void cryptonight_av2_aesni_double(const void *input, size_t size, void *output, cryptonight_ctx *ctx) {
-#   if !defined(XMRIG_ARMv7)
+#   if !defined(LITIG_ARMv7)
     cryptonight_double_hash<0x80000, MEMORY, 0x1FFFF0, false>(input, size, output, ctx);
 #   endif
 }
@@ -63,16 +63,16 @@ static void cryptonight_av4_softaes_double(const void *input, size_t size, void 
 }
 
 
-#ifndef XMRIG_NO_AEON
+#ifndef LITIG_NO_AEON
 static void cryptonight_lite_av1_aesni(const void *input, size_t size, void *output, cryptonight_ctx *ctx) {
-    #   if !defined(XMRIG_ARMv7)
+    #   if !defined(LITIG_ARMv7)
     cryptonight_hash<0x40000, MEMORY_LITE, 0xFFFF0, false>(input, size, output, ctx);
 #endif
 }
 
 
 static void cryptonight_lite_av2_aesni_double(const void *input, size_t size, void *output, cryptonight_ctx *ctx) {
-#   if !defined(XMRIG_ARMv7)
+#   if !defined(LITIG_ARMv7)
     cryptonight_double_hash<0x40000, MEMORY_LITE, 0xFFFF0, false>(input, size, output, ctx);
 #   endif
 }
@@ -121,7 +121,7 @@ bool CryptoNight::init(int algo, int variant)
         return false;
     }
 
-#   ifndef XMRIG_NO_AEON
+#   ifndef LITIG_NO_AEON
     const int index = algo == Options::ALGO_CRYPTONIGHT_LITE ? (variant + 3) : (variant - 1);
 #   else
     const int index = variant - 1;
@@ -154,7 +154,7 @@ bool CryptoNight::selfTest(int algo) {
     _mm_free(ctx->memory);
     _mm_free(ctx);
 
-#   ifndef XMRIG_NO_AEON
+#   ifndef LITIG_NO_AEON
     return memcmp(output, algo == Options::ALGO_CRYPTONIGHT_LITE ? test_output1 : test_output0, (Options::i()->doubleHash() ? 64 : 32)) == 0;
 #   else
     return memcmp(output, test_output0, (Options::i()->doubleHash() ? 64 : 32)) == 0;
